@@ -70,6 +70,14 @@ Lưu ý:
 
 export async function POST(req: NextRequest) {
   try {
+    // Kiểm tra API Key để bảo mật
+    const authHeader = req.headers.get("authorization");
+    const chatbotApiKey = process.env.CHATBOT_API_KEY;
+
+    if (chatbotApiKey && authHeader !== `Bearer ${chatbotApiKey}`) {
+      return NextResponse.json({ error: "Unauthorized: Invalid API Key" }, { status: 401 });
+    }
+
     const body = await req.json();
     const returnIntermediateSteps = body.show_intermediate_steps;
     const messages = (body.messages ?? [])

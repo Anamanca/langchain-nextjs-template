@@ -1,0 +1,61 @@
+=========================================================
+HƯỚNG DẪN SỬ DỤNG TAE-CHATBOT (GEMINI 2.5 FLASH)
+=========================================================
+
+Dự án này là một chatbot bán hàng và tư vấn kỹ thuật chuyên nghiệp, 
+sử dụng công nghệ Gemini 2.5 Flash mới nhất từ Google.
+
+---------------------------------------------------------
+1. CÁCH NẠP TÀI LIỆU SẢN PHẨM (INGEST DATA)
+---------------------------------------------------------
+Đây là bước quan trọng nhất để AI có thể tư vấn giá và kỹ thuật.
+
+- Bước 1: Chuẩn bị nội dung sản phẩm. Bạn có 2 cách:
+    + Cách 1 (Khuyên dùng): Sử dụng file Excel (.xlsx, .csv), PDF, Word (.docx), Markdown (.md) hoặc Text (.txt).
+    + Cách 2: Nội dung văn bản thuần túy.
+- Bước 2: Truy cập tab "Tra cứu (RAG)" hoặc "Đại lý Tra cứu" trên giao diện.
+- Bước 3: Tìm mục "Nạp tài liệu thông minh".
+- Bước 4: 
+    + Nếu dùng file: Nhấn vào ô chọn file và chọn tệp tin từ máy tính của bạn.
+    + Nếu dùng văn bản: Dán nội dung vào ô văn bản bên dưới.
+- Bước 5: Nhấn nút "Bắt đầu nạp dữ liệu".
+- Kết quả: Dữ liệu được trích xuất tự động và lưu vĩnh viễn vào Supabase Cloud. AI sẽ sẵn sàng trả lời dựa trên dữ liệu này sau vài giây.
+
+---------------------------------------------------------
+2. CÁC CHỨC NĂNG CHÍNH TRÊN GIAO DIỆN
+---------------------------------------------------------
+
+Tab 🏴‍☠️ CHAT (Chat cơ bản):
+- Nhiệm vụ: Trợ lý bán hàng trực tuyến.
+- Đặc điểm: Trả lời nhanh, thân thiện theo phong cách tiếng Việt chuyên nghiệp. 
+- Sử dụng: Dùng để trả lời các câu hỏi chung, không cần tra cứu dữ liệu sâu.
+
+Tab 🐶 RETRIEVAL (Chat với tài liệu):
+- Nhiệm vụ: Tra cứu chính xác thông tin từ tài liệu đã nạp.
+- Đặc điểm: AI sẽ đọc file bạn đã upload lên để tìm giá và thông số kỹ thuật.
+- Sử dụng: Phù hợp khi khách hỏi đích danh mã sản phẩm hoặc báo giá cụ thể.
+
+Tab 🤖 RETRIEVAL AGENTS (Đại lý thông minh - Khuyên dùng):
+- Nhiệm vụ: Đây là cấp độ cao nhất của chatbot.
+- Đặc điểm: AI tự quyết định khi nào cần tra cứu tài liệu, khi nào cần trả lời trực tiếp.
+- Tính năng: Bật "Show intermediate steps" để xem AI đang "suy nghĩ" và "tìm kiếm" dữ liệu như thế nào.
+- Sử dụng: Hoàn hảo nhất để làm trợ lý bán hàng tự động trên website.
+
+Tab 🧱 STRUCTURED OUTPUT (Dữ liệu cấu trúc):
+- Nhiệm vụ: Phân tích tâm trạng và trích xuất thông tin từ tin nhắn của khách.
+- Sử dụng: Dành cho admin muốn xem khách hàng đang vui hay buồn, hoặc muốn lọc lấy mã sản phẩm khách đang quan tâm từ một đoạn chat dài.
+
+Tab 🕸️ LANGGRAPH (Hội thoại nâng cao):
+- Nhiệm vụ: Demo khả năng ghi nhớ và xử lý logic phức tạp.
+- Đặc điểm: AI sẽ trả lời theo phong cách bạn đã cấu hình trong mã nguồn LangGraph.
+
+---------------------------------------------------------
+3. LƯU Ý KỸ THUẬT
+---------------------------------------------------------
+- API Key: Luôn đảm bảo GOOGLE_API_KEY trong file .env.local còn hiệu lực.
+- Model Chat: Gemini 2.5 Flash (Tốc độ cực nhanh, xử lý được 1 triệu token).
+- Model Embedding: gemini-embedding-001 (Đảm bảo tra cứu dữ liệu cực kỳ chính xác).
+- Database: Dữ liệu lưu tại Supabase, không bị mất khi tắt máy tính.
+
+Chúc bạn xây dựng được hệ thống trợ lý bán hàng ưng ý!
+=========================================================

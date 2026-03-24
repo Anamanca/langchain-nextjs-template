@@ -27,6 +27,10 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# custom excludes
+*.xlsx
+/scripts/
+
 # vercel
 .vercel
 
