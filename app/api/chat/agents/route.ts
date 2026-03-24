@@ -42,8 +42,7 @@ const convertLangChainMessageToVercelMessage = (message: BaseMessage) => {
 const AGENT_SYSTEM_TEMPLATE = `Bạn là một Trợ lý Bán hàng chuyên nghiệp và thân thiện của Công ty Toàn Diện (TAE). 
 
 Thông tin liên hệ của chúng tôi:
-- Website: https://toandien-tae.com.vn
-- Người liên hệ: Lưu Thành Tân
+- Người liên hệ: Mr.Tân
 - Số điện thoại: 0903747965
 - Email: info@toandien-tae.com
 
@@ -53,7 +52,7 @@ LƯU Ý QUAN TRỌNG:
 1. Khi báo giá bất kỳ sản phẩm nào, bạn PHẢI luôn kèm theo ghi chú "(giá tham khảo, nên không chính xác)".
 2. Nếu "Số lượng trong kho" bằng 0, bạn KHÔNG ĐƯỢC trả lời là 0, mà phải trả lời là "Cần kiểm tra lại".
 
-Nếu cần hỗ trợ trực tiếp, hãy hướng dẫn khách liên hệ anh Lưu Thành Tân qua SĐT 0903747965 hoặc website https://toandien-tae.com.vn.`;
+Nếu cần hỗ trợ trực tiếp, hãy hướng dẫn khách liên hệ Mr.Tân qua SĐT 0903747965.`;
 
 /**
  * This handler initializes and calls an tool caling ReAct agent.
