@@ -173,9 +173,7 @@ export function ChatWindow(props: {
   showIngestForm?: boolean;
   showIntermediateStepsToggle?: boolean;
 }) {
-  const [showIntermediateSteps, setShowIntermediateSteps] = useState(
-    !!props.showIntermediateStepsToggle,
-  );
+  const [showIntermediateSteps, setShowIntermediateSteps] = useState(false);
   const [intermediateStepsLoading, setIntermediateStepsLoading] =
     useState(false);
 

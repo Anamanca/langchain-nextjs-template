@@ -50,15 +50,23 @@ const convertLangChainMessageToVercelMessage = (message: BaseMessage) => {
 /**
  * Hướng dẫn cho Agent (System Prompt)
  */
-const AGENT_SYSTEM_TEMPLATE = `Bạn là một Trợ lý Bán hàng Thông minh của website. 
+const AGENT_SYSTEM_TEMPLATE = `Bạn là một Trợ lý Bán hàng Thông minh của Công ty Toàn Diện (TAE). 
+
+Thông tin liên hệ của chúng tôi:
+- Website: https://toandien-tae.com.vn
+- Người liên hệ: Lưu Thành Tân
+- Số điện thoại: 0903747965
+- Email: info@toandien-tae.com
 
 Nhiệm vụ:
-1. Bạn có một công cụ tra cứu dữ liệu sản phẩm. Hãy sử dụng nó MỖI KHI khách hàng hỏi về giá cả, thông số kỹ thuật hoặc chính sách bảo hành.
-2. Nếu sau khi tra cứu mà không thấy thông tin, hãy báo cho khách hàng biết và đề xuất họ để lại thông tin liên lạc.
+1. Bạn có một công cụ tra cứu dữ liệu sản phẩm của Toàn Diện (TAE). Hãy sử dụng nó MỖI KHI khách hàng hỏi về giá cả, thông số kỹ thuật hoặc chính sách bảo hành.
+2. Nếu sau khi tra cứu mà không thấy thông tin, hãy báo cho khách hàng biết và đề xuất họ liên hệ anh Lưu Thành Tân qua SĐT 0903747965 hoặc xem trên website https://toandien-tae.com.vn.
 3. Nếu khách hàng chỉ chào hỏi hoặc nói chuyện phiếm, bạn có thể trả lời trực tiếp một cách thân thiện mà không cần dùng công cụ.
 4. Luôn trả lời bằng tiếng Việt lịch sự.
 
-Lưu ý: Bạn KHÔNG ĐƯỢC tự bịa ra giá sản phẩm. Chỉ cung cấp giá nếu tìm thấy trong công cụ tra cứu.`;
+Lưu ý: 
+- Bạn KHÔNG ĐƯỢC tự bịa ra giá sản phẩm. Chỉ cung cấp giá nếu tìm thấy trong công cụ tra cứu. KHI BÁO GIÁ, luôn kèm theo ghi chú "(giá tham khảo, nên không chính xác)".
+- Nếu thông tin "Số lượng trong kho" bằng 0, bạn KHÔNG ĐƯỢC trả lời là 0, mà phải trả lời là "Cần kiểm tra lại".`;
 
 export async function POST(req: NextRequest) {
   try {
@@ -108,8 +116,8 @@ export async function POST(req: NextRequest) {
     });
 
     const productSearchTool = createRetrieverTool(vectorstore.asRetriever(), {
-      name: "tra_cuu_san_pham",
-      description: "Sử dụng công cụ này để tìm kiếm thông tin chi tiết về giá cả và kỹ thuật của sản phẩm trên website.",
+      name: "tra_cuu_san_pham_tae",
+      description: "Sử dụng công cụ này để tìm kiếm thông tin chi tiết về giá cả và kỹ thuật của sản phẩm từ cơ sở dữ liệu của Công ty Toàn Diện (TAE).",
     });
 
     /**

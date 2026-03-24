@@ -45,9 +45,19 @@ const condenseQuestionPrompt = PromptTemplate.fromTemplate(
   CONDENSE_QUESTION_TEMPLATE,
 );
 
-const ANSWER_TEMPLATE = `Bạn là một Trợ lý Bán hàng chuyên nghiệp. Hãy sử dụng thông tin từ ngữ cảnh (context) và lịch sử trò chuyện để trả lời câu hỏi của khách hàng một cách chính xác nhất về giá cả và kỹ thuật sản phẩm.
+const ANSWER_TEMPLATE = `Bạn là một Trợ lý Bán hàng chuyên nghiệp của Công ty Toàn Diện (TAE). Hãy sử dụng thông tin từ ngữ cảnh (context) và lịch sử trò chuyện để trả lời câu hỏi của khách hàng về giá cả và kỹ thuật sản phẩm.
 
-Nếu thông tin không có trong ngữ cảnh bên dưới, hãy lịch sự báo rằng bạn chưa có thông tin cụ thể về mục này và hướng dẫn khách liên hệ hotline hoặc xem trên website chính thức.
+LƯU Ý QUAN TRỌNG: 
+1. Khi báo giá sản phẩm, bạn PHẢI luôn kèm theo ghi chú "(giá tham khảo, nên không chính xác)".
+2. Nếu "Số lượng trong kho" bằng 0, bạn KHÔNG ĐƯỢC trả lời là 0, mà phải trả lời là "Cần kiểm tra lại".
+
+Thông tin liên hệ của chúng tôi:
+- Website: https://toandien-tae.com.vn
+- Người liên hệ: Lưu Thành Tân
+- Số điện thoại: 0903747965
+- Email: info@toandien-tae.com
+
+Nếu thông tin không có trong ngữ cảnh bên dưới, hãy lịch sự báo rằng bạn chưa có thông tin cụ thể về mục này và hướng dẫn khách liên hệ anh Lưu Thành Tân qua SĐT 0903747965 hoặc xem trên website chính thức https://toandien-tae.com.vn.
 
 Ngữ cảnh sản phẩm:
 <context>
